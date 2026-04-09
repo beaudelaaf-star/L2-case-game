@@ -20,8 +20,8 @@ def draw ():
 
     if game_over :
         screen.fill("white")
-        screen.draw.text("Times up your final score is"+str(score),color = "black",midtop = (300,100),fontsize = 40)
-pgzrun.go()
+        screen.draw.text("Times up your final score is "+str(score),color = "black",midtop = (300,100),fontsize = 40)
+
 
 def place_ant2():
     ant2.x = randint(50,550)
@@ -33,8 +33,56 @@ def update():
     if keyboard.left:
         ant1.x = ant1.x-2
 
+    if keyboard.right:
+        ant1.x = ant1.x+2
+
+    if keyboard.up:
+        ant1.y = ant1.y-2
+    
     if keyboard.down:
-        ant
+        ant1.y = ant1.y+2
+
+
+    ant_touched = ant1.colliderect(ant2)
+    if ant_touched:
+        place_ant2()
+        score = score+5
+
+def times_up():
+    global game_over
+    game_over = True
+
+clock.schedule(times_up,15.0)        
+
+    
+pgzrun.go()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
